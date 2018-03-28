@@ -4,15 +4,117 @@
         <name>Secs4Net</name>
     </assembly>
     <members>
-        <member name="M:Secs4Net.SecsMessage.#ctor(System.Byte,System.Byte,System.String,System.Boolean,Secs4Net.Item)">
+        <member name="T:Secs4Net.ConnectionState">
             <summary>
-            使用指定的S字节，F字节，函数名称，是否期待响应，Item实例，初始化SecsMessage类的新实例
+            Connection state
             </summary>
-            <param name="s">message stream number</param>
-            <param name="f">message function number</param>
-            <param name="name">Stream function name</param>
-            <param name="replyExpected">expect reply message</param>
-            <param name="item">the root item of message</param>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Connecting">
+            <summary>
+            connecting
+            </summary>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Connected">
+            <summary>
+            connected
+            </summary>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Selected">
+            <summary>
+            selected
+            </summary>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Retry">
+            <summary>
+            retry
+            </summary>
+        </member>
+        <member name="M:Secs4Net.SecsExtension.EncodeItem(Secs4Net.SecsFormat,System.Int32,System.Int32@)">
+            <summary>
+            Encode Item header + value (initial array only)
+            </summary>
+            <param name="format">items format</param>
+            <param name="valueCount">items value count</param>
+            <param name="headerlength">header bytes length</param>
+            <returns></returns>
+        </member>
+        <member name="M:Secs4Net.SecsExtension.Encode(Secs4Net.Item,System.Collections.Generic.List{Secs4Net.RawData})">
+            <summary>
+            Encode item to raw data buffer
+            </summary>
+            <param name="item"></param>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Secs4Net.Item.Items">
+            <summary>
+            List items
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.GetValue``1">
+            <summary>
+            get value by specific type
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.GetValues``1">
+            <summary>
+            get value array by specific type
+            </summary>
+        </member>
+        <member name="F:Secs4Net.Item._rawBytes">
+            <summary>
+            if Format is List RawBytes is only header bytes.
+            otherwise include header and data bytes.
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(System.Collections.ObjectModel.ReadOnlyCollection{Secs4Net.Item})">
+            <summary>
+            List
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.Array,Secs4Net.Lazy{System.String})">
+            <summary>
+            U2,U4,U8
+            I1,I2,I4,I8
+            F4,F8
+            Boolean
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.String,System.Text.Encoding)">
+            <summary>
+            A,J
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.ICloneable)">
+            <summary>
+            Empty Item(none List)
+            </summary>
+            <param name="format"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Secs4Net.MessageType.Select_req">
+            00000000
+        </member>
+        <member name="F:Secs4Net.MessageType.Select_rsp">
+            00000001	ReplyExpected
+        </member>
+        <member name="F:Secs4Net.MessageType.Deselect_req">
+            00000010
+        </member>
+        <member name="F:Secs4Net.MessageType.Deselect_rsp">
+            00000011	ReplyExpected
+        </member>
+        <member name="F:Secs4Net.MessageType.Linktest_req">
+            00000100
+        </member>
+        <member name="F:Secs4Net.MessageType.Linktest_rsp">
+            00000101	ReplyExpected
+        </member>
+        <member name="F:Secs4Net.MessageType.Reject_req">
+            00000110
+        </member>
+        <member name="F:Secs4Net.MessageType.Seperate_req">
+            00000111
         </member>
         <member name="T:Secs4Net.Properties.Resources">
             <summary>
@@ -78,6 +180,56 @@
         <member name="P:Secs4Net.Properties.Resources.T3Timeout">
             <summary>
               查找类似 T3 Timeout! 的本地化字符串。
+            </summary>
+        </member>
+        <member name="E:Secs4Net.SecsGem.ConnectionChanged">
+            <summary>
+            HSMS connection state changed event
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.State">
+            <summary>
+            Connection state
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.DeviceId">
+            <summary>
+            Device Id
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.LinkTestInterval">
+            <summary>
+            LinkTest Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T3">
+            <summary>
+            T3 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T5">
+            <summary>
+            T5 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T6">
+             <summary>
+            T6 Timer Interval
+             </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T7">
+            <summary>
+            T7 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T8">
+            <summary>
+            T8 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.LinkTestEnable">
+            <summary>
+            get or set linking test timer enable or not 
             </summary>
         </member>
         <member name="M:Secs4Net.SecsGem.#ctor(System.Net.IPAddress,System.Int32,System.Boolean,System.Action{Secs4Net.SecsMessage,System.Action{Secs4Net.SecsMessage}},Secs4Net.SecsTracer,System.Int32)">
@@ -195,83 +347,73 @@
             <param name="index">位元組的起始索引</param>
             <returns>回傳_currentStep不足的byte數</returns>
         </member>
-        <member name="F:Secs4Net.MessageType.Select_req">
-            00000000
-        </member>
-        <member name="F:Secs4Net.MessageType.Select_rsp">
-            00000001	ReplyExpected
-        </member>
-        <member name="F:Secs4Net.MessageType.Deselect_req">
-            00000010
-        </member>
-        <member name="F:Secs4Net.MessageType.Deselect_rsp">
-            00000011	ReplyExpected
-        </member>
-        <member name="F:Secs4Net.MessageType.Linktest_req">
-            00000100
-        </member>
-        <member name="F:Secs4Net.MessageType.Linktest_rsp">
-            00000101	ReplyExpected
-        </member>
-        <member name="F:Secs4Net.MessageType.Reject_req">
-            00000110
-        </member>
-        <member name="F:Secs4Net.MessageType.Seperate_req">
-            00000111
-        </member>
-        <member name="M:Secs4Net.Item.Value``1">
+        <member name="M:Secs4Net.SecsMessage.ToString">
             <summary>
-            get value by specific type
+            将stream function转变为可读化样式
             </summary>
-            <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
-        <member name="F:Secs4Net.Item._rawBytes">
+        <member name="P:Secs4Net.SecsMessage.S">
             <summary>
-            if Format is List RawBytes is only header bytes.
-            otherwise include header and data bytes.
+            message stream number
             </summary>
         </member>
-        <member name="M:Secs4Net.Item.#ctor(System.Collections.ObjectModel.ReadOnlyCollection{Secs4Net.Item})">
+        <member name="P:Secs4Net.SecsMessage.F">
             <summary>
-            List
+            message function number
             </summary>
         </member>
-        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.Array,Secs4Net.Lazy{System.String})">
+        <member name="P:Secs4Net.SecsMessage.ReplyExpected">
             <summary>
-            U2,U4,U8
-            I1,I2,I4,I8
-            F4,F8
-            Boolean
+            expect reply message
             </summary>
         </member>
-        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.String,System.Text.Encoding)">
+        <member name="P:Secs4Net.SecsMessage.SecsItem">
             <summary>
-            A,J
+            the root item of message
             </summary>
         </member>
-        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.ICloneable)">
+        <member name="P:Secs4Net.SecsMessage.Name">
             <summary>
-            Empty Item(none List)
+            stream function name
             </summary>
-            <param name="format"></param>
-            <param name="value"></param>
         </member>
-        <member name="M:Secs4Net.SecsExtension.EncodeItem(Secs4Net.SecsFormat,System.Int32,System.Int32@)">
+        <member name="P:Secs4Net.SecsMessage.RawDatas">
             <summary>
-            Encode Item header + value (initial array only)
+            rawdatas
             </summary>
-            <param name="dataLength">Item value bytes length</param>
-            <param name="headerlength">return header bytes length</param>
-            <returns>header bytes + initial bytes of value </returns>
         </member>
-        <member name="M:Secs4Net.SecsExtension.Encode(Secs4Net.Item,System.Collections.Generic.List{Secs4Net.RawData})">
+        <member name="F:Secs4Net.SecsMessage.dummyHeaderDatas">
             <summary>
-            Encode item to raw data buffer
+            header datas
             </summary>
-            <param name="item"></param>
-            <param name="buffer"></param>
-            <returns></returns>
+        </member>
+        <member name="M:Secs4Net.SecsMessage.#ctor(System.Byte,System.Byte,System.String,System.Boolean,Secs4Net.Item)">
+            <summary>
+            使用指定的S字节，F字节，函数名称，是否期待响应，Item实例，初始化SecsMessage类的新实例
+            </summary>
+            <param name="s">message stream number</param>
+            <param name="f">message function number</param>
+            <param name="name">Stream function name</param>
+            <param name="replyExpected">expect reply message</param>
+            <param name="item">the root item of message</param>
+        </member>
+        <member name="M:Secs4Net.SecsMessage.#ctor(System.Byte,System.Byte,System.String,Secs4Net.Item)">
+            <summary>
+            使用指定的S字节，F字节，函数名称，Item实例，初始化SecsMessage类的新实例
+            </summary>
+            <param name="s">message stream number</param>
+            <param name="f">message function number</param>
+            <param name="name">Stream function name</param>
+            <param name="item">the root item of message</param>
+        </member>
+        <member name="M:Secs4Net.SecsMessage.#ctor(System.Byte,System.Byte,System.String)">
+            <summary>
+            使用指定的S字节，F字节，函数名称，初始化SecsMessage类的新实例
+            </summary>
+            <param name="s">message stream number</param>
+            <param name="f">message function number</param>
+            <param name="name">stream function name</param>
         </member>
     </members>
 </doc>
