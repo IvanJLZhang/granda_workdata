@@ -1,0 +1,422 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Secs4Net</name>
+    </assembly>
+    <members>
+        <member name="T:Secs4Net.ConnectionState">
+            <summary>
+            Connection state
+            </summary>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Connecting">
+            <summary>
+            connecting
+            </summary>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Connected">
+            <summary>
+            connected
+            </summary>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Selected">
+            <summary>
+            selected
+            </summary>
+        </member>
+        <member name="F:Secs4Net.ConnectionState.Retry">
+            <summary>
+            retry
+            </summary>
+        </member>
+        <member name="M:Secs4Net.SecsExtension.EncodeItem(Secs4Net.SecsFormat,System.Int32,System.Int32@)">
+            <summary>
+            Encode Item header + value (initial array only)
+            </summary>
+            <param name="format">items format</param>
+            <param name="valueCount">items value count</param>
+            <param name="headerlength">header bytes length</param>
+            <returns></returns>
+        </member>
+        <member name="M:Secs4Net.SecsExtension.Encode(Secs4Net.Item,System.Collections.Generic.List{Secs4Net.RawData})">
+            <summary>
+            Encode item to raw data buffer
+            </summary>
+            <param name="item"></param>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Secs4Net.Item.Items">
+            <summary>
+            List items
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.GetValue``1">
+            <summary>
+            get value by specific type
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.GetValues``1">
+            <summary>
+            get value array by specific type
+            </summary>
+        </member>
+        <member name="F:Secs4Net.Item._rawBytes">
+            <summary>
+            if Format is List RawBytes is only header bytes.
+            otherwise include header and data bytes.
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(System.Collections.ObjectModel.ReadOnlyCollection{Secs4Net.Item})">
+            <summary>
+            List
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.Array,Secs4Net.Lazy{System.String})">
+            <summary>
+            U2,U4,U8
+            I1,I2,I4,I8
+            F4,F8
+            Boolean
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.String,System.Text.Encoding)">
+            <summary>
+            A,J
+            </summary>
+        </member>
+        <member name="M:Secs4Net.Item.#ctor(Secs4Net.SecsFormat,System.ICloneable)">
+            <summary>
+            Empty Item(none List)
+            </summary>
+            <param name="format"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Secs4Net.MessageType.Select_req">
+            00000000
+        </member>
+        <member name="F:Secs4Net.MessageType.Select_rsp">
+            00000001	ReplyExpected
+        </member>
+        <member name="F:Secs4Net.MessageType.Deselect_req">
+            00000010
+        </member>
+        <member name="F:Secs4Net.MessageType.Deselect_rsp">
+            00000011	ReplyExpected
+        </member>
+        <member name="F:Secs4Net.MessageType.Linktest_req">
+            00000100
+        </member>
+        <member name="F:Secs4Net.MessageType.Linktest_rsp">
+            00000101	ReplyExpected
+        </member>
+        <member name="F:Secs4Net.MessageType.Reject_req">
+            00000110
+        </member>
+        <member name="F:Secs4Net.MessageType.Seperate_req">
+            00000111
+        </member>
+        <member name="T:Secs4Net.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9F1">
+            <summary>
+              查找类似 Unrecognized Device Id 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9F11">
+            <summary>
+              查找类似 Data Too Long 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9F13">
+            <summary>
+              查找类似 Conversation Timeout 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9F3">
+            <summary>
+              查找类似 Unrecognized Stream Type 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9F5">
+            <summary>
+              查找类似 Unrecognized Function Type 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9F7">
+            <summary>
+              查找类似 Illegal Data 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9F9">
+            <summary>
+              查找类似 Transaction Timer Timeout 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.S9Fy">
+            <summary>
+              查找类似 S9Fy message reply. 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.SxF0">
+            <summary>
+              查找类似 Equipment is not online mode 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Secs4Net.Properties.Resources.T3Timeout">
+            <summary>
+              查找类似 T3 Timeout! 的本地化字符串。
+            </summary>
+        </member>
+        <member name="E:Secs4Net.SecsGem.ConnectionChanged">
+            <summary>
+            HSMS connection state changed event
+            </summary>
+        </member>
+        <member name="E:Secs4Net.SecsGem.PrimaryMessageRecived">
+            <summary>
+            HSMS primary message received evect
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.State">
+            <summary>
+            Connection state
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.DeviceId">
+            <summary>
+            Device Id
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.LinkTestInterval">
+            <summary>
+            LinkTest Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T3">
+            <summary>
+            T3 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T5">
+            <summary>
+            T5 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T6">
+             <summary>
+            T6 Timer Interval
+             </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T7">
+            <summary>
+            T7 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.T8">
+            <summary>
+            T8 Timer Interval
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsGem.LinkTestEnable">
+            <summary>
+            get or set linking test timer enable or not 
+            </summary>
+        </member>
+        <member name="M:Secs4Net.SecsGem.#ctor(System.Net.IPAddress,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            使用指定的IP地址，端口号，通信模式，处理主消息的委托方法，SecsMessage消息调试对象，内部调用的sorket实例的缓冲区大小，初始化SecsGem类的新实例
+            </summary>
+            <param name="ip">IP地址</param>
+            <param name="port">端口号</param>
+            <param name="isActive">活动模式</param>
+            <param name="receiveBufferSize">构造函数内部的Socket接收区缓存大小</param>
+        </member>
+        <member name="M:Secs4Net.SecsGem.ReceiveComplete(System.IAsyncResult)">
+            <summary>
+            接收数据
+            </summary>
+            <param name="iar">异步操作状态参数</param>
+        </member>
+        <member name="M:Secs4Net.SecsGem.HandleControlMessage(Secs4Net.SecsGem.Header)">
+            <summary>
+            处理控制消息
+            </summary>
+            <param name="header">头字节数据</param>
+        </member>
+        <member name="M:Secs4Net.SecsGem.HandleDataMessage(Secs4Net.SecsGem.Header,Secs4Net.SecsMessage)">
+            <summary>
+            处理数据消息
+            </summary>
+            <param name="header">头字节数据</param>
+            <param name="msg">消息主体</param>
+        </member>
+        <member name="M:Secs4Net.SecsGem.SendControlMessage(Secs4Net.MessageType,System.Int32)">
+            <summary>
+            发送控制消息
+            </summary>
+            <param name="msgType">消息指令类型</param>
+            <param name="systembyte">系统字节</param>
+        </member>
+        <member name="M:Secs4Net.SecsGem.SendDataMessage(Secs4Net.SecsMessage,System.Int32,System.AsyncCallback,System.Object)">
+            <summary>
+            发送数据消息
+            </summary>
+            <param name="msg">主体消息内容</param>
+            <param name="systembyte">系统字节</param>
+            <param name="callback">异步操作结果</param>
+            <param name="syncState">异步状态</param>
+            <returns>异步返回操作状态对象</returns>
+        </member>
+        <member name="M:Secs4Net.SecsGem.CommunicationStateChanging(Secs4Net.ConnectionState)">
+            <summary>
+            改变状态
+            </summary>
+            <param name="newState"></param>
+        </member>
+        <member name="M:Secs4Net.SecsGem.Reset">
+            <summary>
+            重置
+            </summary>
+        </member>
+        <member name="M:Secs4Net.SecsGem.Send(Secs4Net.SecsMessage)">
+            <summary>
+            发送SECS消息到设备
+            </summary>
+            <param name="msg">SecsMessage对象</param>
+            <returns>如果msg.ReplyExpected为true，则设备的回复msg;否则为null.</returns>
+        </member>
+        <member name="M:Secs4Net.SecsGem.BeginSend(Secs4Net.SecsMessage,System.AsyncCallback,System.Object)">
+            <summary>
+            将SECS消息异步发送至设备
+            </summary>
+            <param name="msg">SecsMessage对象</param>
+            <param name="callback">设备的回复消息处理程序回调.</param>
+            <param name="state">同步状态对象.</param>
+            <returns>如果msg.ReplyExpected为true，则引用异步发送的IAsyncResult，否则为空.</returns>
+        </member>
+        <member name="M:Secs4Net.SecsGem.EndSend(System.IAsyncResult)">
+            <summary>
+            结束异步发送
+            </summary>
+            <param name="asyncResult">引用异步发送的IAsyncResult</param>
+            <returns>如果参数 <paramref name="asyncResult"/>是引用异步发送的IAsyncResult，则设备的回复消息，否则为空.</returns>
+        </member>
+        <member name="M:Secs4Net.SecsGem.Dispose">
+            <summary>
+            清除连接信息，并将所有设置重置
+            </summary>
+        </member>
+        <member name="F:Secs4Net.SecsGem.SecsDecoder.decoders">
+            <summary>
+            解码通道
+            </summary>
+        </member>
+        <member name="F:Secs4Net.SecsGem.SecsDecoder._remainBytes">
+            <summary>
+            Offset: next fill index
+            Cout : next fill count
+            </summary>
+        </member>
+        <member name="M:Secs4Net.SecsGem.SecsDecoder.Decode(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bytes">位元組</param>
+            <param name="index">有效位元的起始索引</param>
+            <param name="length">有效位元長度</param>
+            <returns>如果輸入的位元組經解碼後尚有不足則回傳true,否則回傳false</returns>
+        </member>
+        <member name="M:Secs4Net.SecsGem.SecsDecoder.Decode(System.Byte[],System.Int32,System.Int32@)">
+            <summary>
+            將位元組通過decode pipeline處理
+            </summary>
+            <param name="bytes">位元組</param>
+            <param name="length">有效位元的起始索引</param>
+            <param name="index">位元組的起始索引</param>
+            <returns>回傳_currentStep不足的byte數</returns>
+        </member>
+        <member name="M:Secs4Net.SecsMessage.ToString">
+            <summary>
+            将stream function转变为可读化样式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Secs4Net.SecsMessage.S">
+            <summary>
+            message stream number
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsMessage.F">
+            <summary>
+            message function number
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsMessage.ReplyExpected">
+            <summary>
+            expect reply message
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsMessage.SecsItem">
+            <summary>
+            the root item of message
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsMessage.Name">
+            <summary>
+            stream function name
+            </summary>
+        </member>
+        <member name="P:Secs4Net.SecsMessage.RawDatas">
+            <summary>
+            rawdatas
+            </summary>
+        </member>
+        <member name="F:Secs4Net.SecsMessage.dummyHeaderDatas">
+            <summary>
+            header datas
+            </summary>
+        </member>
+        <member name="M:Secs4Net.SecsMessage.#ctor(System.Byte,System.Byte,System.String,System.Boolean,Secs4Net.Item)">
+            <summary>
+            使用指定的S字节，F字节，函数名称，是否期待响应，Item实例，初始化SecsMessage类的新实例
+            </summary>
+            <param name="s">message stream number</param>
+            <param name="f">message function number</param>
+            <param name="name">Stream function name</param>
+            <param name="replyExpected">expect reply message</param>
+            <param name="item">the root item of message</param>
+        </member>
+        <member name="M:Secs4Net.SecsMessage.#ctor(System.Byte,System.Byte,System.String,Secs4Net.Item)">
+            <summary>
+            使用指定的S字节，F字节，函数名称，Item实例，初始化SecsMessage类的新实例
+            </summary>
+            <param name="s">message stream number</param>
+            <param name="f">message function number</param>
+            <param name="name">Stream function name</param>
+            <param name="item">the root item of message</param>
+        </member>
+        <member name="M:Secs4Net.SecsMessage.#ctor(System.Byte,System.Byte,System.String)">
+            <summary>
+            使用指定的S字节，F字节，函数名称，初始化SecsMessage类的新实例
+            </summary>
+            <param name="s">message stream number</param>
+            <param name="f">message function number</param>
+            <param name="name">stream function name</param>
+        </member>
+    </members>
+</doc>
